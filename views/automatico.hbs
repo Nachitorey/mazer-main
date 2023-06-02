@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +11,24 @@
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+
+ <style>
+    .active {
+      background-color: #ffffff; /* Cambia el estilo CSS para reflejar el botón activo */
+    }
+  </style>
+
+    <script>
+    function toggleButton(button) {
+     var buttons = document.getElementsByClassName("toggle-button");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+      }
+      button.classList.add("active");
+    }
+  </script>
+  
+
 </head>
 
 <body>
@@ -55,8 +70,7 @@
                     <span>Modo automático y manual</span>
                 </a>
             </li>
-            
-            
+        
         </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -73,14 +87,14 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Chat Application</h3>
-                <p class="text-subtitle text-muted">An application for user to check Chat inbox</p>
+                <h3>Regar automatico y manual</h3>
+                <p class="text-subtitle text-muted">Modo de uso</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Chat Application</li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Modo de uso</li>
                     </ol>
                 </nav>
             </div>
@@ -91,11 +105,21 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Coming Soon!</h5>
+                        <h5 class="card-title">Modo automatico</h5>
                     </div>
                     <div class="card-body">
-                        If you want to contribute. Check out this <a href="https://github.com/zuramai/mazer"
-                            target="_blank">template repository</a>.
+                        <a> ¿Desea activar modo automatico en la planta?</a>
+                        <button class="toggle-button" onclick="toggleButton(this)" > SI </button>
+                        <button class="toggle-button" onclick="toggleButton(this)" > NO </button>
+                     <hr>
+                     <h5 class="card-header"> Modo manual </h5>   
+                    <a> Desea regar la planta? </a>
+                    <button class="toggle-button" onclick="toggleButton(this)"> SI </button>
+                    <button class="toggle-button" onclick="toggleButton(this)"> NO </button>
+                    <hr>
+                    <a> Iluminicidad</a>
+                    <button class="toggle-button" onclick="toggleButton(this)"> Apagar la luz</button>
+                    <button class="toggle-button" onclick="toggleButton(this)"> Prender la luz</button>
                     </div>
                 </div>
             </div>
@@ -103,23 +127,10 @@
     </section>
 </div>
 
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="http://ahmadsaugi.com">A. Saugi</a></p>
-                    </div>
-                </div>
-            </footer>
-        </div>
+            
     </div>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     
     <script src="assets/js/main.js"></script>
 </body>
-
-</html>
