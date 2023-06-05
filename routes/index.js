@@ -24,9 +24,9 @@ router.get('/login', function(req, res, next) {
 //});
 
 
-router.get('/principal', function(req, res, next) {
-  res.render('index', { renderizar: 'main', usuario : localStorage.getItem('usuario') });
-});
+//router.get('/principal', function(req, res, next) {
+//  res.render('index', { renderizar: 'main', usuario : localStorage.getItem('usuario') });
+//});
 
 router.get('/dashboard', function(req, res, next) {
   res.render('index', { renderizar: 'main', usuario : localStorage.getItem('usuario') });
@@ -39,6 +39,7 @@ router.get('/automatico', function(req, res, next) {
 router.get('/perfil', function(req, res, next) {
   res.render('perfil', { renderizar: 'main', usuario : localStorage.getItem('usuario') });
 });
+
 
 
 
