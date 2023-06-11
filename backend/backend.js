@@ -1,24 +1,18 @@
-const express = require('express');
-const morgan = require('morgan');
-const multer = require('multer');
-const path = require('path');
-const app = express
+const { Pool } = require('pg');
 
-app.request('port', 3000);
-
-//middlewars
-app.use(morgan('dev'));
-const storage = multer.diskStorage({
-    destination: path.join(__dirname, 'back/uploads'),
-    filename(req, file, cb){
-        cb(null, new Date().getTime() + path.extname (file.originalname))
-    }
+const pool = new Pool({
+     host: 'localhost',
+     user: 'postgres',
+     password: 'PSJl23IT43ky1vxBCZVWy-2guTzIaKd_',
+     database: 'lhihtpgb',
+     port: '3000'
 })
-app.use(multer({storage}).single('image'));
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
 
-
-app.listen (app.get('port'), () =>{
-     console.log('Server on port', app.get('port'));
-})
+const getUsers = async(req, res) => {
+    const response = await pool.query('SELECT * FROM Clientes');
+    console.log(response.rows);
+    res.send('Clientes');
+}
+module.exports = {
+    getUsers
+}

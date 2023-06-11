@@ -13,3 +13,8 @@ const db = pgp(cn);
 
 // Exporting the database object for shared use:
 module.exports = db;
+
+
+
+
+

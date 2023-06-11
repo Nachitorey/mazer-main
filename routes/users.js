@@ -8,7 +8,6 @@ router.post('/recibe-data', (req, res, next) => {
   console.log(req.body)
 
   res.send("Recibi los datos.")
-
 })
 
 module.exports = router;

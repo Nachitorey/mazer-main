@@ -4,16 +4,18 @@ var hbs = require('hbs');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const router = express.Router();
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
- 
+hbs.registerPartials(path.join(__dirname, 'views'), (err) => {});
 hbs.registerPartials(path.join(__dirname, 'views/partials'), (err) => {});
 hbs.registerPartials(path.join(__dirname, 'views/component'), (err) => {});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

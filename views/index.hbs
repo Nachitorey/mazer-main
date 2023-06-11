@@ -14,16 +14,19 @@
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <canvas id="myChart"></canvas>
+
 </head>
 
 <body>
+    <canvas id="myChart"></canvas>
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="/dashboard"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -52,7 +55,7 @@
                         <li class="sidebar-item  ">
                             <a href="/automatico" class='sidebar-link'>
                                 <i class="bi bi-basket-fill"></i>
-                                <span>Modo automatico y manual</span>
+                                <span>Modo automático y manual</span>
                             </a>
                         </li>
         
@@ -69,7 +72,7 @@
             </header>
 
             <div class="page-heading">
-                <h3>Estadistica de la planta</h3>
+                <h3>Estadística de la planta</h3>
             </div>
             <div class="page-content">
                 <section class="row">
@@ -86,7 +89,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <h6 class="text-muted font-semibold">Humedad</h6>
-                                                <h6 class="font-extrabold mb-0">112.000</h6>
+                                                <h6 class="font-extrabold mb-0">112</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +106,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <h6 class="text-muted font-semibold">Luz</h6>
-                                                <h6 class="font-extrabold mb-0">183.000</h6>
+                                                <h6 class="font-extrabold mb-0">183</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -119,8 +122,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Temperatura</h6>
-                                                <h6 class="font-extrabold mb-0">80.000</h6>
+                                                <h6 class="text-muted font-semibold">Temp</h6>
+                                                <h6 class="font-extrabold mb-0">10°C</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -136,7 +139,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Agua en tanque</h6>
+                                                <h6 class="text-muted font-semibold">Tanque</h6>
                                                 <h6 class="font-extrabold mb-0">112</h6>
                                             </div>
                                         </div>
