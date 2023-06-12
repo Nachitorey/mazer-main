@@ -39,6 +39,15 @@ router.get('/automatico', function(req, res, next) {
 router.get('/perfil', function(req, res, next) {
   res.render('perfil', { renderizar: 'main', usuario : localStorage.getItem('usuario') });
 });
+router.get('/registrarse', function(req, res, next) {
+  res.render('register', { renderizar: 'main', usuario : localStorage.getItem('usuario') });
+});
+
+router.get('/buscarcontra', function(req, res, next) {
+  res.render('buscar', { renderizar: 'main', usuario : localStorage.getItem('usuario') });
+});
+
+
 
 //router.get('/register', function(req, res, next){
 //  res.render('component/auth-register', { title: 'ignacio', usuario: 'Nachito'});
