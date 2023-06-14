@@ -30,6 +30,7 @@
     "express-mysql-session": "^3.0.0",
     "express-session": "^1.17.3",
     "feather-icons": "^4.28.0",
+    "flask": "^0.2.10",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "laravel-mix": "^6.0.10",

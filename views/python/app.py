@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, flash
+from flask_see import sse
 import psycopg2
 from urllib.parse import urlparse
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = '06854511-502b-4cbd-ba87-b90ba443e5d2'
 
 # Obtener la URL de conexión de ElephantSQL
 elephant_url = "postgres://lhihtpgb:idcbC-MsU5moPRfu6wuig0ukPx2Flh52@rajje.db.elephantsql.com/lhihtpgb"  # Reemplaza con tu URL
@@ -55,4 +56,4 @@ def login():
         return redirect('/')
 
 if __name__ == '_main_':
-    app.run()
+    app.run(debug=True)
