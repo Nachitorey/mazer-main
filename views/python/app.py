@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, redirect, flash
-from flask_see import sse
 import psycopg2
 from urllib.parse import urlparse
 
 app = Flask(__name__)
-app.secret_key = '06854511-502b-4cbd-ba87-b90ba443e5d2'
+app.secret_key = 'your_secret_key'
 
 # Obtener la URL de conexión de ElephantSQL
 elephant_url = "postgres://lhihtpgb:idcbC-MsU5moPRfu6wuig0ukPx2Flh52@rajje.db.elephantsql.com/lhihtpgb"  # Reemplaza con tu URL
@@ -28,7 +27,7 @@ conn = psycopg2.connect(
 
 @app.route('/')
 def index():
-    return render_template('login.hbs')
+    return render_template('login2.hbs')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -55,5 +54,34 @@ def login():
     else:
         return redirect('/')
 
-if __name__ == '_main_':
-    app.run(debug=True)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # Obtener los datos del formulario de registro
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        correo = request.form['correoelectronico']
+        usuario = request.form['usuario']
+        contrasena = request.form['contraseña']
+
+        # Insertar los datos del usuario en la base de datos
+        try:
+            cursor = conn.cursor()
+            query = "INSERT INTO clientes (nombre, apellido, correoelectronico, usuario, contraseña) VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(query, (nombre, apellido, correo, usuario, contrasena))
+            conn.commit()
+            cursor.close()
+
+            flash('Registro exitoso. Inicia sesión con tu nueva cuenta.')
+            return redirect('/login')
+        except Exception as e:
+            error_message = 'Error occurred while registering user'
+            flash(error_message)
+            print(str(e))
+            return redirect('/')
+    else:
+        return render_template('register.hbs')
+    
+if __name__ == '__main__':
+    app.run()

@@ -40,3 +40,5 @@ if verificar_credenciales(usuario, contrasena):
     print("Credenciales válidas. Acceso permitido.")
 else:
     print("Credenciales inválidas. Acceso denegado.")
+
+
