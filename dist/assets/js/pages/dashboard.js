@@ -1,3 +1,61 @@
+// Obtén una referencia al elemento del gráfico
+var canvas = document.getElementById('grafico');
+var ctx = canvas.getContext('2d');
+
+// Variables para almacenar los datos del gráfico
+var labels = []; // Etiquetas de tiempo
+var sensorValues = []; // Valores de los sensores
+
+// Función para dibujar el gráfico
+function dibujarGrafico() {
+  // Limpiar el canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Dibujar el gráfico con los datos actuales
+  // Aquí deberías utilizar la lógica específica de tu gráfico para representar los datos
+  // Como ejemplo, se dibuja un gráfico de línea simple
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height - sensorValues[0]);
+
+  for (var i = 1; i < sensorValues.length; i++) {
+	ctx.lineTo(i, canvas.height - sensorValues[i]);
+  }
+
+  ctx.stroke();
+}
+
+// Función para actualizar los datos del gráfico
+function actualizarDatos(data) {
+  var time = new Date().toLocaleTimeString();
+  var sensorValue = data.sensorValue;
+
+  // Agregar nuevos datos a los arrays
+  labels.push(time);
+  sensorValues.push(sensorValue);
+
+  // Limitar la cantidad de puntos en el gráfico
+  var maxDataPoints = 20; // Ajusta la cantidad deseada de puntos en el gráfico
+  if (labels.length > maxDataPoints) {
+	labels.shift();
+	sensorValues.shift();
+  }
+
+  // Dibujar el gráfico actualizado
+  dibujarGrafico();
+}
+
+// Establecer la comunicación con el Arduino
+var socket = new WebSocket('ws://tu_arduino_direccion_ip:puerto'); // Reemplaza con la dirección IP y puerto de tu Arduino WebSocket
+
+socket.onmessage = function(event) {
+  var data = JSON.parse(event.data);
+  actualizarDatos(data);
+};
+
+// Aquí puedes agregar tu código existente para configurar y mostrar el gráfico inicialmente
+// Asegúrate de adaptarlo a la estructura del gráfico que ya tienes en tu página web
+
+
 var optionsProfileVisit = {
 	annotations: {
 		position: 'back'
@@ -67,7 +125,7 @@ var optionsEurope = {
 		enabled: false
 	},
 	xaxis: {
-		type: 'datetime',
+		type: 'realtime',
 		categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z","2018-09-19T07:30:00.000Z","2018-09-19T08:30:00.000Z","2018-09-19T09:30:00.000Z","2018-09-19T10:30:00.000Z","2018-09-19T11:30:00.000Z"],
 		axisBorder: {
 			show:false
@@ -100,6 +158,8 @@ let optionsIndonesia = {
 	...optionsEurope,
 	colors: ['#dc3545'],
 }
+
+
 
 
 

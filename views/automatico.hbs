@@ -27,11 +27,37 @@
       button.classList.add("active");
     }
   </script>
-  
 
 </head>
 
 <body>
+
+ <script>
+    $(document).ready(function() {
+      $("#boton-regar").click(function() {
+        enviarSenialArduino('1');  // Envía '1' al Arduino para activar la bomba
+      });
+
+      $("#boton-noregar").click(function() {
+        enviarSenialArduino('0');  // Envía '0' al Arduino para desactivar la bomba
+      });
+
+      function enviarSenialArduino(comando) {
+        $.ajax({
+          url: 'http://172.20.10.2:COM4',  // Reemplaza con la dirección IP y puerto de tu Arduino
+          type: 'GET',
+          data: { command: comando },
+          success: function(response) {
+            console.log('Señal enviada al Arduino');
+          },
+          error: function() {
+            console.log('Error al enviar la señal al Arduino');
+          }
+        });
+      }
+    });
+</script>
+
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -109,13 +135,13 @@
                     </div>
                     <div class="card-body">
                         <a> ¿Desea activar modo automatico en la planta?</a>
-                        <button class="toggle-button" onclick="toggleButton(this)" > SI </button>
-                        <button class="toggle-button" onclick="toggleButton(this)" > NO </button>
+                        <button id="boton-automatico" class="toggle-button" onclick="toggleButton(this)" > SI </button>
+                        <button id="boton-noautomatico" class="toggle-button" onclick="toggleButton(this)" > NO </button>
                      <hr>
                      <h5 class="card-header"> Modo manual </h5>   
                     <a> Desea regar la planta? </a>
-                    <button class="toggle-button" onclick="toggleButton(this)"> SI </button>
-                    <button class="toggle-button" onclick="toggleButton(this)"> NO </button>
+                    <button id="boton-regar" class="toggle-button" onclick="toggleButton(this)"> SI </button>
+                    <button id="boton-noregar" class="toggle-button" onclick="toggleButton(this)"> NO </button>
                     <hr>
                     <a>Luminosidad</a>
                     <button class="toggle-button" onclick="toggleButton(this)"> Apagar la luz</button>

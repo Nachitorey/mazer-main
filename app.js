@@ -4,8 +4,10 @@ var hbs = require('hbs');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-
+var http = require('http');
+var SerialPort = require('serialport');
+const parsers = SerialPort.parsers;
+var fs = require('fs');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

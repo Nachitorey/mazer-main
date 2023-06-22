@@ -1,4 +1,4 @@
-#!/Users/nachitou/Documents/mazer-main/.venv/bin/python3.11
+#!/Users/nachitou/Documents/mazer-main/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

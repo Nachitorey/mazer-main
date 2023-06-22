@@ -1,4 +1,6 @@
 import psycopg2
+import serial
+import matplotlib.pyplot
 
 def ejecutar_consulta(query, parametros = None):
     #Nos conectamos a la DataBase
