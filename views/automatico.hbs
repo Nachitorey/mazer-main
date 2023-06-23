@@ -6,11 +6,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
 
  <style>
     .active {
@@ -27,35 +29,22 @@
       button.classList.add("active");
     }
   </script>
-
 </head>
 
 <body>
 
  <script>
-    $(document).ready(function() {
-      $("#boton-regar").click(function() {
-        enviarSenialArduino('1');  // Envía '1' al Arduino para activar la bomba
-      });
+      var socket = io();
+      
+        document.getElementById('boton-regar').onclick = function() {
 
-      $("#boton-noregar").click(function() {
-        enviarSenialArduino('0');  // Envía '0' al Arduino para desactivar la bomba
-      });
+            socket.emit('riego', { "status":"1" });            
+        };      
+        document.getElementById('boton-noregar').onclick = function(){
 
-      function enviarSenialArduino(comando) {
-        $.ajax({
-          url: 'http://172.20.10.2:COM4',  // Reemplaza con la dirección IP y puerto de tu Arduino
-          type: 'GET',
-          data: { command: comando },
-          success: function(response) {
-            console.log('Señal enviada al Arduino');
-          },
-          error: function() {
-            console.log('Error al enviar la señal al Arduino');
-          }
-        });
-      }
-    });
+            socket.emit('riego', { "status":"0" });
+
+        };
 </script>
 
     <div id="app">
