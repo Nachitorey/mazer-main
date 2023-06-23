@@ -1,17 +1,19 @@
 const http = require('http');
-var express = require('express');
+const express = require('express');
 const socketIO = require('socket.io');
+var app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
+
 var hbs = require('hbs');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const server = http.createServer(app);
-const serialport = require('serialport').SerialPort;
-const { DelimiterParser } = require('@serialport/parser-delimiter');
-
 
 src="https://cdn.socket.io/4.3.1/socket.io.min.js"
 
+const serialport = require('serialport').SerialPort;
+const { DelimiterParser } = require('@serialport/parser-delimiter');
 const puerto = new serialport(
     {
         path: '/dev/cu.usbmodem1401',
@@ -30,7 +32,7 @@ const puerto = new serialport(
         ready = enc.decode(arr);
       let temperatura = parseInt(data, 10) + " °C";
       console.log(temperatura);
-      //io.emit('temperatura', data);
+      io.emit('temperaturaa', data);
     });
 
     puerto.on('error', function (err){

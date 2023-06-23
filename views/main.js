@@ -1,7 +1,7 @@
 const socket = io();
 
-socket.onclose('temperatura', function (data) {
+socket.onclose('temperaturaa', function (data) {
     console.log(data);
-    let temp = document.getElementById('temperatura');
+    let temp = document.getElementById('temperaturaa');
     temp.innerHTML = `${data} °C`;
 });
